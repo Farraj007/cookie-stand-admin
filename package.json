@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3500",
-    "build": "next build -p 3500",
-    "start": "next start -p 3500"
+    "dev": "next dev ",
+    "build": "next build ",
+    "start": "next start "
   },
   "dependencies": {
     "next": "latest",
