@@ -23,7 +23,8 @@ function ReportTable(props) {
             </>
             );
         })}
-        <tr className="text-white text-center p-4">
+        </tbody>
+        <tfoot className="text-white text-center p-4">
             <td>Totals</td>
             {hourly_sales.map((data) => {
             return (
@@ -33,8 +34,7 @@ function ReportTable(props) {
             );
             })}
             <td>{ hourly_sales.reduce((total, sales) => total += sales*props.inputs.length, 0) }</td>
-        </tr>
-        </tbody>
+        </tfoot>
     </table>
     );  
 }
