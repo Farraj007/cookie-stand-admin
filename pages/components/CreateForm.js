@@ -2,7 +2,7 @@ import { useState } from "react";
 function CreateForm({handleChange}) {
     const [minValue, setMinValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
-    avgValue=(maxValue+minValue)/2;
+    const avgValue=(maxValue+minValue)/2;
 
   return (
       <form
