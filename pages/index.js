@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function Home() {
   const [token, setToken] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   
   function loginHandle(event) {
