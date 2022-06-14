@@ -1,5 +1,5 @@
 import { useState } from "react";
-function CreateForm({handleChange}) {
+function CreateForm({handleSubmit}) {
     const [minValue, setMinValue] = useState(0);
     const [maxValue, setMaxValue] = useState(0);
     const avgValue=(maxValue+minValue)/2;
@@ -7,7 +7,7 @@ function CreateForm({handleChange}) {
   return (
       <form
         className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16"
-        onSubmit={handleChange}
+        onSubmit={handleSubmit}
       >
         <div>
           <h1 className="text-bold text-xl p-2">Create Cookie Stand</h1>
@@ -15,7 +15,7 @@ function CreateForm({handleChange}) {
         <div>
           <label className="flex justify-around m-3 p-1">
             Location
-            <input
+            <input required
               type="text"
               name="location"
               placeholder="Cookie Stand Location"
@@ -26,7 +26,7 @@ function CreateForm({handleChange}) {
         <div className="flex justity-between py-4">
           <label className="flex-col text-sm">
             Minimum Customers per Hour
-            <input
+            <input required
               onChange={event => setMinValue(parseInt(event.target.value))} 
 
               type="number"
@@ -37,8 +37,8 @@ function CreateForm({handleChange}) {
           </label>
           <label className="flex-col text-sm">
             Maximum Customers per Hour
-            <input
-              onChange={event => setMaxValue(parseInt(event.target.value))} 
+            <input required
+              onChange={event => setMaxValue(parseInt(event.target.value))}
               type="number"
               placeholder=""
               className="w-3/4"
@@ -47,7 +47,7 @@ function CreateForm({handleChange}) {
           </label>
           <label className="flex-col text-sm">
             Average Cookies per Sale
-            <input
+            <input reqired
               value={avgValue}
               type="number"
               placeholder=""
