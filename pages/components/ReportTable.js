@@ -1,7 +1,8 @@
 import {table_heading, hourly_sales} from '../../data.js';
+
 function ReportTable(props) {
   return (
-    <table className="table-auto w-3/4 my-9 rounded-lg bg-[#5b5790] ">
+    <table className="table-auto w-3/4 my-9 rounded-lg bg-[#5B5790] ">
         <thead>
         <tr>
             {table_heading.map((heading) => (
