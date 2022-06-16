@@ -1,8 +1,6 @@
-import { table_heading, hourly_sales } from "../../data.js";
+import { table_heading } from "../../data.js";
 
 function ReportTable({ inputs, array }) {
-  console.log("iiii", inputs);
-  console.log("aaaa", array);
   return (
     <table className="table-auto w-3/4 my-9 rounded-lg bg-[#5B5790] ">
       <thead>
