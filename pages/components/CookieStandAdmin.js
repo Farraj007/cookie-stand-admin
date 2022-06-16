@@ -25,26 +25,40 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
     setArray([...array,randomArray]);
     setcounter(counter+1);
     }
-    const getData=async()=>{
-    const config={
-        headers:{
-            'Authorization': `Bearer ${token}`
-        }
+    const DeleteData = async (id) => {
+
+      await axios.delete(`https://cookie-standss.herokuapp.com/api/v1/cookie-stands/${id}/`,{headers:{'Authorization': `Bearer ${token}`}})
+      .then(res => {
+        GetData()
+        console.log("deleted data", res)
+      })
+      .catch(e => {
+        console.log("delete error", e)
+      })
+      
     }
-   
-    await axios.get("https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/", config ).then(res=>{
-        console.log(res.data)
+    const GetData = async () => {
+
+      await axios.get("https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/",{headers:{'Authorization': `Bearer ${token}`}})
+      .then(res => {
         setData(res.data)
-        }).catch(err=>{console.log(err)})
+        console.log("data getter", res.data)
+      })
+      .catch(e => { console.log("error", e)
+      })
+      
     }
-    useEffect(()=>{getData()},[])
+    useEffect(() => {
+      GetData();
+    },[])
+
   return (
     <div className="h-full">
       <Head><title>Cookie Stand</title></Head>
       <div className="bg-[#ACA9BB] flex items-center  flex-col h-full ">
       <Header setIsLoggedIn={setIsLoggedIn}/>
         <CreateForm handleSubmit={handleSubmit} />
-        {inputs.length? <ReportTable inputs={inputs} array={array}/> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
+        {inputs.length? <ReportTable inputs={inputs} array={array} DeleteData={DeleteData}/> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
       <Footer counter={counter}/>
       </div>
     </div>
