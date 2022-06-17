@@ -1,5 +1,5 @@
 function Login({loginHandle}) {
-    
+ 
   return (
     <div className="h-screen flex bg-[#ACA9BB]">
       <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
@@ -7,7 +7,7 @@ function Login({loginHandle}) {
           Log In 🔐
         </h1>
         
-        <form onSubmit={loginHandle}>
+        <form id="logInForm"onSubmit={loginHandle} >
           <div>
             <label htmlFor="username">UserName</label>
             <input

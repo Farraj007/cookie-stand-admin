@@ -15,18 +15,17 @@ function Home() {
         .post("https://cookie-stand-barham-farraj.herokuapp.com/api/token/", {
           username: event.target.username.value,
           password: event.target.password.value,
-        })
-        .then(async(res) => {
-          setIsLoading(true);
+        }).then(async(res) => {
           localStorage.setItem("token", res.data.access);
-           setToken(localStorage.getItem("token"))
-            (setIsLoggedIn(true),setTimeout(() => {setIsLoading(false)}, 300)) ;     
-        })
-          .catch(() => {
-            setIsLoading(false);
-            toast.error("Invalid Username or Password")
-           
+          setToken(localStorage.getItem("token"))
+          setIsLoggedIn(true) ;     
+        }).catch(() => {
+            // setTimeout(() => {setIsLoading(true)}, 10);
+            toast.error("Invalid username or password")
+            setIsLoading(false)
           })
+          event.target.reset();
+
   };
 
   return (
