@@ -1,8 +1,8 @@
 import { table_heading } from "../../data.js";
 
 function ReportTable({ inputs, array, DeleteData}) {
-  console.log("data", array);
-  console.log("inputs", inputs);
+  // console.log("data", array);
+  // console.log("inputs", inputs);
 
   return (
     <table className="table-auto w-3/4 my-9 rounded-lg bg-[#5B5790] ">
