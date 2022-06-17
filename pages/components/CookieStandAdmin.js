@@ -15,9 +15,7 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
   const randomArray = (a,b)=> Array.from({length: 14}, () => Math.floor((Math.random() * parseInt(a)) + parseInt(b)));
 
     function handleSubmit(event) {
-      console.log(event)
     event.preventDefault();
-    console.log('submitted')
     event.target.location.focus();
     const addedLocation = {
         location: event.target.location.value,
@@ -47,7 +45,7 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
     postData(addedLocation);
 
     }
-    const GetData = async () => {
+    const getData = async () => {
 
       await axios.get("https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/",config)
       .then(res => {
@@ -56,7 +54,8 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
       .catch(e => { console.log("error", e)
       }) 
     }
-    useEffect(() => {GetData()},[])
+    useEffect(() => {getData()}, [])
+    
     const deleteData = async (id) => {
 
       await axios.delete(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/${id}/`,config)
