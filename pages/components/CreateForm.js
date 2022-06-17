@@ -15,7 +15,7 @@ function CreateForm({handleSubmit}) {
           <label className=" text-sm ">
             Location
           </label>
-          <input required
+          <input required={true}
             type="text"
             name="location"
             placeholder="Cookie Stand Location"
@@ -30,7 +30,7 @@ function CreateForm({handleSubmit}) {
         <div className="flex justity-between py-4">
           <label className="flex-col text-sm">
             Minimum Customers per Hour
-            <input required
+            <input required={true}
               // onChange={event => setMinValue(parseInt(event.target.value))} 
 
               type="number"
@@ -41,7 +41,7 @@ function CreateForm({handleSubmit}) {
           </label>
           <label className="flex-col text-sm">
             Maximum Customers per Hour
-            <input required
+            <input required={true}
               // onChange={event => setMaxValue(parseInt(event.target.value))}
               type="number"
               placeholder=""
@@ -51,7 +51,7 @@ function CreateForm({handleSubmit}) {
           </label>
           <label className="flex-col text-sm">
             Average Cookies per Sale
-            <input reqired
+            <input required={true}
               // value={avgValue}
               type="number"
               placeholder=""

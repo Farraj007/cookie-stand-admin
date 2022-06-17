@@ -1,5 +1,6 @@
+import {useEffect} from "react";
 function Login({loginHandle}) {
- 
+  useEffect(() => {username.focus()}, [])
   return (
     <div className="h-screen flex bg-[#ACA9BB]">
       <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
