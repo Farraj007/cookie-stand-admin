@@ -1,7 +1,7 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ReportTable from "./ReportTable";
 import CreateForm from "./CreateForm";
 import axios from "axios";
@@ -48,9 +48,7 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
       })
       
     }
-    useEffect(() => {
-      GetData();
-    },[])
+  
 
   return (
     <div className="h-full">
