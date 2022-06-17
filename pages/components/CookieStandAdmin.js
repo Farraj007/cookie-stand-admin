@@ -11,26 +11,45 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
   const [inputs, setInputs] = useState([]);
   const [counter,setcounter]= useState(0);  
   const [data,setData]= useState([]);
-
+  const config={headers:{'Authorization': `Bearer ${token}`}}
   const randomArray = (a,b)=> Array.from({length: 14}, () => Math.floor((Math.random() * parseInt(a)) + parseInt(b)));
 
     function handleSubmit(event) {
+      console.log(event)
     event.preventDefault();
+    console.log('submitted')
     event.target.location.focus();
     const addedLocation = {
         location: event.target.location.value,
         minimum_customers_per_hour: event.target.minimum_customers_per_hour.value,
         maximum_customers_per_hour: event.target.maximum_customers_per_hour.value,
+        average_cookies_per_sale: event.target.average_cookies_per_sale.value,
         hourly_sales: [],
       }
     setInputs([...inputs,addedLocation]);
-    addedLocation.hourly_sales = randomArray(addedLocation.minimum_customers_per_hour,addedLocation.maximum_customers_per_hour);
+    // randomArray(addedLocation.minimum_customers_per_hour,addedLocation.maximum_customers_per_hour);
+    // addedLocation.hourly_sales = 
     setcounter(counter+1);
     event.target.reset();
+    const postData = async (e) => {
+      console.log('posted')
+
+      await axios.post(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/`,addedLocation,config)
+      .then(res => {
+        GetData()
+        console.log("created data", res)
+      })
+      .catch(e => {
+        console.log("create error", e)
+      })
+      
+    }
+    postData(addedLocation);
+
     }
     const GetData = async () => {
 
-      await axios.get("https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/",{headers:{'Authorization': `Bearer ${token}`}})
+      await axios.get("https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/",config)
       .then(res => {
         setData(res.data.map(item => {return {...item,hourly_sales:randomArray(item.minimum_customers_per_hour,item.maximum_customers_per_hour)}}))
       })
@@ -38,9 +57,9 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
       }) 
     }
     useEffect(() => {GetData()},[])
-    const DeleteData = async (id) => {
+    const deleteData = async (id) => {
 
-      await axios.delete(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/${id}/`,{headers:{'Authorization': `Bearer ${token}`}})
+      await axios.delete(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/${id}/`,config)
       .then(res => {
         GetData()
         console.log("deleted data", res)
@@ -49,25 +68,15 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
         console.log("delete error", e)
       })
     }
-    const PostData = async (id) => {
-
-      await axios.post(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/`,{headers:{'Authorization': `Bearer ${token}`}})
-      .then(res => {
-        GetData()
-        console.log("deleted data", res)
-      })
-      .catch(e => {
-        console.log("delete error", e)
-      })
-    }
-
+    
+    
   return (
     <div className="h-full">
       <Head><title>Cookie Stand</title></Head>
       <div className="bg-[#ACA9BB] flex items-center  flex-col h-full ">
       <Header setIsLoggedIn={setIsLoggedIn}/>
         <CreateForm handleSubmit={handleSubmit} />
-        {data.length? <ReportTable inputs={data}  DeleteData={DeleteData}/> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
+        {data.length? <ReportTable inputs={data}  deleteData={deleteData} /> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
       <Footer counter={counter}/>
       </div>
     </div>

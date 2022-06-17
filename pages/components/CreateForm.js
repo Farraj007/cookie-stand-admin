@@ -1,21 +1,26 @@
+import {useEffect} from 'react'
+
 function CreateForm({handleSubmit}) {
     // const [minValue, setMinValue] = useState(0);
     // const [maxValue, setMaxValue] = useState(0);
     // const avgValue=(maxValue+minValue)/2;
+    // useEffect(() => {location.focus()}, [])
+
   return (
       <form
         className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16"
-        onSubmit={handleSubmit}
+        onSubmit={(e)=>{handleSubmit(e)}}
       >
         <div>
           <h1 className="text-bold text-xl p-2">Create Cookie Stand</h1>
         </div>
         <div className="flex justify-around py-4 ">
           <div className="flex flex-col place-items-center w-1/2">
-          <label className=" text-sm ">
+          <label htmlFor="location" className=" text-sm ">
             Location
-          </label>
+          </label >
           <input required={true}
+            autoFocus={true}
             type="text"
             name="location"
             placeholder="Cookie Stand Location"
