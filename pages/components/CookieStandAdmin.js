@@ -16,7 +16,7 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
 
     function handleSubmit(event) {
     event.preventDefault();
-    event.target.location.focus();
+    // event.target.location.focus();
     const addedLocation = {
         location: event.target.location.value,
         minimum_customers_per_hour: event.target.minimum_customers_per_hour.value,
