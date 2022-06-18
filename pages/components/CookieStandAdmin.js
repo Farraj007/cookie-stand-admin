@@ -9,7 +9,6 @@ import axios from "axios";
 function CookieStandAdmin({setIsLoggedIn,token,UserName}) {
 
   const [inputs, setInputs] = useState([]);
-  const [counter,setcounter]= useState(0);  
   const [data,setData]= useState([]);
   const config={headers:{'Authorization': `Bearer ${token}`}}
   const randomArray = (a,b)=> Array.from({length: 14}, () => Math.floor((Math.random() * parseInt(a)) + parseInt(b)));
@@ -26,18 +25,18 @@ function CookieStandAdmin({setIsLoggedIn,token,UserName}) {
     setInputs([...inputs,addedLocation]);
     // randomArray(addedLocation.minimum_customers_per_hour,addedLocation.maximum_customers_per_hour);
     // addedLocation.hourly_sales = 
-    setcounter(counter+1);
     event.target.reset();
     const postData = async (e) => {
-      console.log('posted')
 
       await axios.post(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/`,addedLocation,config)
       .then(res => {
-        GetData()
         console.log("created data", res)
       })
       .catch(e => {
         console.log("create error", e)
+      })
+      .finally(() => {
+        getData();
       })
       
     }
@@ -59,11 +58,13 @@ function CookieStandAdmin({setIsLoggedIn,token,UserName}) {
 
       await axios.delete(`https://cookie-stand-barham-farraj.herokuapp.com/api/v1/cookies/${id}/`,config)
       .then(res => {
-        GetData()
         console.log("deleted data", res)
       })
       .catch(e => {
         console.log("delete error", e)
+      })
+      .finally(() => {
+        getData();
       })
     }
     
@@ -75,7 +76,7 @@ function CookieStandAdmin({setIsLoggedIn,token,UserName}) {
       <Header setIsLoggedIn={setIsLoggedIn} UserName={UserName}/>
         <CreateForm handleSubmit={handleSubmit} />
         {data.length? <ReportTable inputs={data}  deleteData={deleteData} /> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
-      <Footer counter={counter}/>
+      <Footer counter={data.length}/>
       </div>
     </div>
   );
