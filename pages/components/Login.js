@@ -2,7 +2,7 @@ import {useEffect} from "react";
 function Login({loginHandle}) {
   useEffect(() => {username.focus()}, [])
   return (
-    <div className="h-screen flex bg-[#ACA9BB]">
+    <div className="h-screen flex bg-[#ACA9BB] drop-shadow-2xl">
       <div className="w-full max-w-md m-auto bg-white rounded-lg border border-primaryBorder shadow-default py-10 px-16">
         <h1 className="text-2xl font-medium text-primary mt-4 mb-12 text-center animate-pulse">
           Log In 🔐
@@ -29,7 +29,7 @@ function Login({loginHandle}) {
           </div>
 
           <div className="flex justify-center items-center mt-6">
-            <button className="bg-[#8885EF] hover:bg-[#5B5790] py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark">
+            <button className="cursor-pointer bg-[#8885EF] hover:bg-[#5B5790] py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-105  duration-300">
               Login
             </button>
           </div>

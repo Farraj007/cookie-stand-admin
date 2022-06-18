@@ -8,7 +8,7 @@ function CreateForm({handleSubmit}) {
 
   return (
       <form
-        className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16"
+        className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16 drop-shadow-md hover:drop-shadow-xl"
         onSubmit={(e)=>{handleSubmit(e)}}
       >
         <div>
@@ -28,7 +28,7 @@ function CreateForm({handleSubmit}) {
           />
           </div>
           
-          <button type="submit"className="bg-[#585780] hover:bg-[#584dbb] rounded-lg px-10 mr-4 ">
+          <button type="submit"className="bg-[#585780] hover:bg-[#584dbb] rounded-lg px-10 mr-4 transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 cursor-pointer duration-300">
             Create Stand
           </button>
         </div>

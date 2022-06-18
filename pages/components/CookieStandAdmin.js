@@ -6,7 +6,7 @@ import ReportTable from "./ReportTable";
 import CreateForm from "./CreateForm";
 import axios from "axios";
 
-function CookieStandAdmin({setIsLoggedIn,token}) {
+function CookieStandAdmin({setIsLoggedIn,token,UserName}) {
 
   const [inputs, setInputs] = useState([]);
   const [counter,setcounter]= useState(0);  
@@ -16,7 +16,6 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
 
     function handleSubmit(event) {
     event.preventDefault();
-    // event.target.location.focus();
     const addedLocation = {
         location: event.target.location.value,
         minimum_customers_per_hour: event.target.minimum_customers_per_hour.value,
@@ -73,7 +72,7 @@ function CookieStandAdmin({setIsLoggedIn,token}) {
     <div className="h-full">
       <Head><title>Cookie Stand</title></Head>
       <div className="bg-[#ACA9BB] flex items-center  flex-col h-full ">
-      <Header setIsLoggedIn={setIsLoggedIn}/>
+      <Header setIsLoggedIn={setIsLoggedIn} UserName={UserName}/>
         <CreateForm handleSubmit={handleSubmit} />
         {data.length? <ReportTable inputs={data}  deleteData={deleteData} /> : <h1 className="my-14 font-bold font-xl">No Cookie Stand Created</h1>}
       <Footer counter={counter}/>

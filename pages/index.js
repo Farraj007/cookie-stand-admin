@@ -9,6 +9,7 @@ function Home() {
   const [token, setToken] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [UserName, setUserName] = useState("");
   const loginHandle = async (event) => {
     event.preventDefault();
       await axios
@@ -17,6 +18,7 @@ function Home() {
           password: event.target.password.value,
         }).then((res) => {
           localStorage.setItem("token", res.data.access);
+          setUserName(event.target.username.value);
           setIsLoading(true)
           setToken(localStorage.getItem("token"))
           setTimeout(() => {(setIsLoading(false)),setIsLoggedIn(true) }, 2000)
@@ -31,7 +33,7 @@ function Home() {
   return (
     <>
       {((isLoggedIn) && (!isLoading)) ? (
-        <CookieStandAdmin setIsLoggedIn={setIsLoggedIn} token={token} />
+        <CookieStandAdmin setIsLoggedIn={setIsLoggedIn} token={token} UserName={UserName}/>
       ) : ( 
         !isLoading && <Login loginHandle={loginHandle} />
       )}
