@@ -8,7 +8,7 @@ function CreateForm({handleSubmit}) {
 
   return (
       <form
-        className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16 drop-shadow-md hover:drop-shadow-xl"
+        className="mx-auto bg-[#5B5790] py-8 w-4/5 text-center rounded-xl mt-16 drop-shadow-md hover:drop-shadow-xl max-w-md mx-auto  rounded-xl shadow-md overflow-hidden md:max-w-2xl"
         onSubmit={(e)=>{handleSubmit(e)}}
       >
         <div>

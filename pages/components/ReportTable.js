@@ -1,7 +1,7 @@
 import { table_heading } from "../../data.js";
 
 function ReportTable({ inputs,deleteData}) {
-  // console.log(inputs[0].hourly_sales[0]);
+  console.log(inputs.map(data => data.hourly_sales[0]).reduce((a,b) => a+b));
   // const newArray = inputs.map((item) => {item.hourly_sales});
   // console.log("newArray", newArray);
 
@@ -38,7 +38,9 @@ function ReportTable({ inputs,deleteData}) {
       <tfoot className="text-white text-center p-4">
         <tr>
         <th key="totals">Totals</th>
-
+       { Array.from({length: 14}).map((data,i) => <th key={i}>{inputs?.reduce((total,sales,j)=> 
+        total+=sales.hourly_sales[i],0)}</th>)}
+        <th>{inputs.reduce((total,sales)=> { return total+=sales.hourly_sales.reduce((t,s)=>t+=s,0)},0)}</th>
         </tr>
       </tfoot>
     </table>
