@@ -40,7 +40,7 @@ function ReportTable({ inputs,deleteData}) {
         <th key="totals">Totals</th>
        { Array.from({length: 14}).map((data,i) => <th key={i}>{inputs?.reduce((total,sales,j)=> 
         total+=sales.hourly_sales[i],0)}</th>)}
-        <th>{inputs.reduce((total,sales)=> { return total+=sales.hourly_sales.reduce((t,s)=>t+=s,0)},0)}</th>
+        <th key="totals of totals">{inputs.reduce((total,sales)=> { return total+=sales.hourly_sales.reduce((t,s)=>t+=s,0)},0)}</th>
         </tr>
       </tfoot>
     </table>
