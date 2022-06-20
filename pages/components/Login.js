@@ -13,7 +13,7 @@ function Login({loginHandle}) {
             <label htmlFor="username">UserName</label>
             <input
               type="username"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+              className={`w-full p-2 text-primary border rounded-md outline-none text-sm  mb-4`}
               id="username"
               placeholder="Your UserName"
             />
@@ -22,14 +22,14 @@ function Login({loginHandle}) {
             <label htmlFor="password">Password</label>
             <input
               type="password"
-              className={`w-full p-2 text-primary border rounded-md outline-none text-sm transition duration-150 ease-in-out mb-4`}
+              className={`w-full p-2 text-primary border rounded-md outline-none text-sm   mb-4`}
               id="password"
               placeholder="Your Password"
             />
           </div>
 
           <div className="flex justify-center items-center mt-6">
-            <button className="cursor-pointer bg-[#8885EF] hover:bg-[#5B5790] py-2 px-4 text-sm text-black rounded border border-green focus:outline-none focus:border-green-dark transition ease-in-out delay-100  hover:-translate-y-1 hover:scale-105  duration-300">
+            <button className="cursor-pointer bg-[#8885EF] hover:bg-[#5B5790] py-2 px-4 text-sm text-black rounded border   hover:scale-105  ">
               Login
             </button>
           </div>
