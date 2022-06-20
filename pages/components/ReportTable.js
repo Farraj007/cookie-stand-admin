@@ -38,7 +38,7 @@ function ReportTable({ inputs,deleteData}) {
       <tfoot className="text-white text-center p-4">
         <tr>
         <th key="totals">Totals</th>
-       {Array.from({length: 14}).map((data,i) => <th key={`${i}totals`}>{inputs?.reduce((total,sales,j)=> 
+       {Array.from({length: 14})?.map((data,i) => <th key={`${i}totals`}>{inputs?.reduce((total,sales,j)=> 
         total+=sales.hourly_sales[i],0)}</th>)}
         <th key="totals of totals">{inputs.reduce((total,sales)=> { return total+=sales.hourly_sales.reduce((t,s)=>t+=s,0)},0)}</th>
         </tr>
